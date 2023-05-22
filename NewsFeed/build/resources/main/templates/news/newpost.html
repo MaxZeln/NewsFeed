@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+
+<form method="post" th:action="@{/news/newpost}" th:object="${newsDto}" enctype="multipart/form-data">
+  <main class="main">
+
+    <div class="input-container">
+      <label for="title">
+        <span class="label-text">Название для статьи</span>
+      </label>
+      <input
+              type="text"
+              th:field="*{title}"
+              id="title"
+              placeholder="введите название статьи"
+      />
+      <div
+              class="error"
+              style="color:red"
+              th:if="${#fields.hasErrors('title')}"
+              th:errors="*{title}"> title error
+      </div>
+    </div>
+
+    <div class="input-container">
+      <label for="content">
+        <span class="label-text">Содержание статьи</span>
+      </label>
+      <input
+              type="text"
+              th:field="*{content}"
+              id="content"
+              placeholder="введите текст для статьи"
+      />
+      <div
+              class="error"
+              style="color:red"
+              th:if="${#fields.hasErrors('content')}"
+              th:errors="*{content}"> content error
+      </div>
+    </div>
+
+
+    <label class="col-form-label">Выберите фотографию для статьи: </label>
+    <br/><br/>
+    <input type="file" name="file" />
+    <br/><br/>
+    </div>
+
+    <button class="btn btn-submit" type="submit">
+      Опубликовать
+    </button>
+
+  </main>
+</form>
+
+</body>
+</html>

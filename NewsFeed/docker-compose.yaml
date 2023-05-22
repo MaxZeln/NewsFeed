@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+  repository:
+    build:
+      context: .
+      dockerfile: dockerfile.db
+    restart: always
+    ports:
+      - "5436:5432"
+    environment:
+      POSTGRES_DB: "NewsFeed"
+      POSTGRES_USER: "user"
+      POSTGRES_PASSWORD: password
+    container_name: postgres_db

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+<h2>News</h2>
+
+<label>
+
+    <tr th:each="newsDto : ${page.content}">
+        <td th:text="${newsDto.title}"></td>
+        <td th:text="${newsDto.content}"></td>
+<!--        <td th:text="${newsDto.bytesNested}">-->
+        <img
+             width="100" height="100"
+             th:src="*{'data:newsDto.bytesNested/jpg;base64,'+ ${newsDto.bytesNested}}"
+             alt="#"
+        />
+<!--        </td>-->
+        <td th:text="${newsDto.date}"></td>
+    </tr>
+
+<!--    <div th:each="newsDto : ${page.content}">-->
+<!--        <div th:text="${classroom.name}"></div>-->
+<!--        <ul>-->
+<!--            <div th:each="images : ${newsDto.image}">-->
+
+<!--            </div>-->
+<!--        </ul>-->
+<!--    </div>-->
+
+</label>
+
+<label>
+
+    </br>
+    </br>
+
+    <form th:action="@{/news/pagewithfixedsize}" th:object="${selectedSize}" method="post">
+
+        <select name="pageSize" id="pageSize" th:field="*{pageSize}">
+            <option value="10" selected>10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+        </select>
+
+        <button type="submit">submit</button>
+    </form>
+
+</label>
+
+    </body>
+</html>

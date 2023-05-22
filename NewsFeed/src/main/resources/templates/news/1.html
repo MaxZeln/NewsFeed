@@ -1,0 +1,21 @@
+<tr>
+    <th>OrderId</th>
+    <th>OrderDescription</th>
+    <th>Details</th>
+</tr>
+<tr th:each="order : ${orders}" th:id="'order' + ${order.id}">
+    <td th:text="${order.id}">id</td>
+    <td th:text="${order.description}">description</td>
+    <td>
+        <table>
+            <tr>
+                <th>DetailId</th>
+                <th>DetailDescription</th>
+            </tr>
+            <tr th:each="detail: ${order.details}">
+                <td th:text="${detail.id}">id</td>
+                <td th:text="${detail.description}">description</td>
+            </tr>
+        </table>
+    </td>
+</tr>
